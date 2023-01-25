@@ -1,7 +1,7 @@
 // Share Canvas Server
 //let	socket = io.connect($OP.getEchoServerURL(1762274));
 
-let socket = io.connect("http://35.78.87.163:30000");
+let socket = io.connect(":30000");
 //let socket = io.connect("http://localhost:30000");
 let graphicBuffers = [];
 let gb_width = 390;
