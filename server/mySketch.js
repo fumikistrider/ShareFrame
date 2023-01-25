@@ -1,8 +1,6 @@
 // Share Canvas Server
-//let	socket = io.connect($OP.getEchoServerURL(1762274));
-
 let socket = io.connect();
-//let socket = io.connect("http://localhost:30000");
+
 let graphicBuffers = [];
 let gb_width = 390;
 let gb_height = 844;
@@ -63,13 +61,13 @@ function preload(){
 	img_wavefollows[5] = loadImage('wave_follow_5.png');
 	img_wavefollows[6] = loadImage('wave_follow_6.png');
 	
-	//bgm = loadSound('bgm.mp3', mp3loaded);
+	bgm = loadSound('bgm.mp3', mp3loaded);
 	
 
 }
 
 function mp3loaded(){
-	//bgm.loop();
+	bgm.loop();
 }
 
 /////////////////////////////////////////////////////
