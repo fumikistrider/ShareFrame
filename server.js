@@ -29,6 +29,7 @@ io.sockets.on('connection', function(socket){
 
   socket.on('buttonPressed', function() {
     console.log("Button Pressed");
+    socket.broadcast.emit('buttonPressed');
   });
 
 

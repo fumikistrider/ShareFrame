@@ -244,6 +244,8 @@ function recvButtonPressed(){
 //
 function someoneIsDrawing(x,y,rad){
 
+	print('x:' + x + ' y:' + y + ' rad:' + rad);
+
 	for(let i = 0 ; i < rad ; i++){
 
 		r = constrain(random(r - 2, r + 2), 160, 180);
