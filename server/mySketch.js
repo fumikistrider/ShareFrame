@@ -216,13 +216,14 @@ function recvButtonPressed(){
 	let s = new Sprite(width / 2, height / 2, img.width, img.height, 'none');
 	let rot = random(-5, 5);
 	s.rotation = rot;
-	s.scale = 0.5;
 	s.draw = function(){ // スプライトの描画をオーバーライド
 		push();
+		scale(0.5);
 		image(img, 0, 0);
 		pop();
 	}
 	s.depth = count;
+	s.scale *= 0.5;
 
 	// 次のバッファを生成する
 	count++;
