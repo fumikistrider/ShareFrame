@@ -27,7 +27,10 @@ let img_beach;
 // Sprites
 let spr_wave;
 let spr_wavefollow;
+// カニ
 let spr_crabs;
+// イラスト
+let spr_illust
 
 // Animations
 let img_crabs = [];
@@ -117,6 +120,10 @@ function setup() {
 			spr_crabs.add(c);
 		}
 
+		if( this.counter === 180){
+			spr_illust.clear();
+		}
+
 		if( this.counter > 360 ){
 			this.counter = 0;
 			this.power++;
@@ -144,7 +151,7 @@ function setup() {
 	spr_wavefollow.power = 0;
 	spr_wavefollow.magnification = 2.0;
 	spr_wavefollow.update = function(){
-		
+
 		if( this.counter === 180){
 			if(this.magnification === 2.0){
 					spr_wavefollow.animation.frameDelay = 24;
@@ -153,12 +160,12 @@ function setup() {
 			}
 			this.animation.play();
 		}
-		
+
 		if( this.counter < 180 ){
 			let mov = sin(this.counter) * this.magnification;
 			this.y += mov;
 		}else{
-			
+
 		}
 		this.counter++;
 		if( this.counter > 360 ){
@@ -174,11 +181,12 @@ function setup() {
 			}
 			//this.x = random( width * 0.2, width * 0.8);
 			this.y = -height * 0.75;
-		}		
+		}
 	}
 	// カニ
 	spr_crabs = new Group();
-	
+	spr_illust = new Group();
+
 }
 
 /////////////////////////////////////////////////////
@@ -224,6 +232,8 @@ function recvButtonPressed(){
 	}
 	s.depth = count;
 	s.scale *= 0.5;
+
+	spr_illust.add(s);
 
 	// 次のバッファを生成する
 	count++;
