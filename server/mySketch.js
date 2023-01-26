@@ -61,7 +61,7 @@ function preload(){
 	img_wavefollows[5] = loadImage('wave_follow_5.png');
 	img_wavefollows[6] = loadImage('wave_follow_6.png');
 	
-	bgm = loadSound('bgm.mp3', mp3loaded);
+	bgm = loadSound('bgm.mp3');
 	
 
 }
@@ -74,6 +74,7 @@ function mp3loaded(){
 //
 function setup() {
 	print(socket);
+	bgm.loop();
 
   createCanvas(windowWidth, windowHeight);
   background(255);
