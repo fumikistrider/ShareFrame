@@ -118,12 +118,10 @@ function setup() {
 			c.life = 1000;
 			c.depth = 101;
 			spr_crabs.add(c);
+
+			spr_illust.removeAll();
 		}
 
-		if( this.counter === 180){
-			spr_illust.removeAll();
-			print('Illust removed');
-		}
 
 		if( this.counter > 360 ){
 			this.counter = 0;
@@ -220,7 +218,8 @@ function draw() {
 //
 function recvButtonPressed(){
 
-print('Button Pressed')
+print('Button Pressed');
+
 	// イラストスプライトを生成する
 	let img = graphicBuffers[count];
 	let s = new Sprite(width / 2, height / 2, img.width, img.height, 'none');
