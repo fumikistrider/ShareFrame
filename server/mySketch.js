@@ -81,7 +81,7 @@ function setup() {
 	colorMode(RGB);
 
 	// 参加を受信した
-  socket.on('hello', someoneJoined);
+	socket.on('hello', someoneJoined);
 	// 参加
   //socket.emit('hello', width, height);
 	graphicBuffers[count] = createGraphics(gb_width, gb_height);
@@ -216,6 +216,7 @@ function recvButtonPressed(){
 	let s = new Sprite(width / 2, height / 2, img.width, img.height, 'none');
 	let rot = random(-5, 5);
 	s.rotation = rot;
+	s.scale = 0.5;
 	s.draw = function(){ // スプライトの描画をオーバーライド
 		push();
 		image(img, 0, 0);
