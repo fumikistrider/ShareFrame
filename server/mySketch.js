@@ -121,7 +121,8 @@ function setup() {
 		}
 
 		if( this.counter === 180){
-			spr_illust.clear();
+			spr_illust.removeAll();
+			print('Illust removed');
 		}
 
 		if( this.counter > 360 ){
