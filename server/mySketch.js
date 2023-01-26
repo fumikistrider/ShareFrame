@@ -220,6 +220,7 @@ function draw() {
 //
 function recvButtonPressed(){
 
+print('Button Pressed')
 	// イラストスプライトを生成する
 	let img = graphicBuffers[count];
 	let s = new Sprite(width / 2, height / 2, img.width, img.height, 'none');
