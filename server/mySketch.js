@@ -119,6 +119,7 @@ function setup() {
 			c.depth = 101;
 			spr_crabs.add(c);
 
+			print('remove illust');
 			spr_illust.removeAll();
 		}
 
