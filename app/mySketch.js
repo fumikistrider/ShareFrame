@@ -114,7 +114,7 @@ function touchMoved() {
 //
 function buttonPressed(){
 	socket.emit('buttonPressed');
-  background(img_bg);
+	background(img_bg);
 }
 
 function erasePressed(){

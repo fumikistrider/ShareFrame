@@ -85,13 +85,13 @@ function setup() {
 	// 参加
   //socket.emit('hello', width, height);
 	graphicBuffers[count] = createGraphics(gb_width, gb_height);
-	
+
 	// 描画を受信した
-	socket.on('drawing', someoneIsDrawing); 
+	socket.on('drawing', someoneIsDrawing);
 
 	// 送信を受信した
 	socket.on('buttonPressed', recvButtonPressed )
-	
+
 	// スプライト
 	// 波
 	spr_wave = new Sprite(img_wave, width / 2, -height * 0.75, img_wave.width, img_wave.height, 'none');
@@ -105,9 +105,9 @@ function setup() {
 		let mov = sin(this.counter) * this.magnification;
 		this.y += mov;
 		this.counter++;
-		
+
 		if( this.counter === 180 && this.magnification == 9.0 && this.crabcount % 2 === 1 ){ // マンジュウガニ登場条件
-			let c = new Sprite(img_crabrare, random(width * 0.3, width * 0.7), random(height * 0.4, height * 0.6),'none');						
+			let c = new Sprite(img_crabrare, random(width * 0.3, width * 0.7), random(height * 0.4, height * 0.6),'none');
 			c.addAnimation(img_crab_manju[0],img_crab_manju[1]);
 			c.moveTo( random(width * 0.3, width * 0.7), -100, random(0.40,1) );
 			c.frameDelay = 12;
@@ -116,7 +116,7 @@ function setup() {
 			c.depth = 101;
 			spr_crabs.add(c);
 		}
-		
+
 		if( this.counter > 360 ){
 			this.counter = 0;
 			this.power++;
@@ -131,7 +131,7 @@ function setup() {
 			this.x = rnd;
 			spr_wavefollow.x = rnd;
 		}
-		
+
 	}
 	// 波跡
 	spr_wavefollow = new Sprite(img_wavefollow, width / 2, -height * 0.75, img_wavefollow.width, img_wavefollow.height, 'none');
@@ -184,12 +184,10 @@ function setup() {
 /////////////////////////////////////////////////////
 //
 function draw() {
-	
 	background('Bisque');
 	image(img_beach,0,0,width,height);
 	fill(255);
 
-	
 	// カニ
 	if( frameCount % 500 == 0 ){
 		let c;
@@ -204,25 +202,17 @@ function draw() {
 		c.update = function(){
 			if( this.life % 60 == 0 ) this.rotationSpeed *= -1;
 		};
-		spr_crabs.add(c);												 			
-						
+		spr_crabs.add(c);
 	}
-		
 }
 
-/////////////////////////////////////////////////////
-//
-function buttonPressed(){
-	socket.emit('buttonPressed');
-	background(255);
-}
 
 /////////////////////////////////////////////////////
 //
 function recvButtonPressed(){
-	
+
 	// イラストスプライトを生成する
-	let img = graphicBuffers[count]; 	
+	let img = graphicBuffers[count];
 	let s = new Sprite(width / 2, height / 2, img.width, img.height, 'none');
 	let rot = random(-5, 5);
 	s.rotation = rot;
@@ -231,8 +221,8 @@ function recvButtonPressed(){
 		image(img, 0, 0);
 		pop();
 	}
-	s.depth = 500 + count;
-	
+	s.depth = count;
+
 	// 次のバッファを生成する
 	count++;
 	graphicBuffers[count] = createGraphics(gb_width, gb_height);
@@ -253,27 +243,22 @@ function someoneIsDrawing(x,y,rad){
 		b = constrain(random(b - 2, b + 2), 72, 92);
 
 		graphicBuffers[count].push();
-		
 		graphicBuffers[count].noStroke();
 		graphicBuffers[count].strokeWeight(1);
 		graphicBuffers[count].fill(r, g, b, 100);
 		graphicBuffers[count].translate(x, y);
 		graphicBuffers[count].rotate(random(0, TWO_PI));
 		graphicBuffers[count].triangle(3,0,-3,0,0,3);
-
 		graphicBuffers[count].pop();
-		
 	}
-	
 }
 
 /////////////////////////////////////////////////////
 //
 function someoneJoined(w, h){
-  print('New user joined' + ' - width:' + w + ' - height:' + h + ' - count:' + count);
+print('New user joined' + ' - width:' + w + ' - height:' + h + ' - count:' + count);
 	gb_width = w;
 	gb_height = h;
-	
 	r = 170;
 	g = 141;
 	b = 82;
@@ -286,4 +271,11 @@ function mouseDragged(){
 
 function mousePressed(){
 	spr_wavefollow.animation.nextFrame();
+}
+
+/////////////////////////////////////////////////////
+//
+function buttonPressed(){
+	socket.emit('buttonPressed');
+	background(255);
 }
