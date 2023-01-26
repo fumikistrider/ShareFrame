@@ -41,7 +41,7 @@ function setup() {
 	colorMode(HSB,100,100,100,100);
 
 	// 参加
-  socket.emit('hello', width, height);
+	socket.emit('hello', width, height);
 	graphicBuffers[count] = createGraphics(gb_width, gb_height);
 
 	// UI
