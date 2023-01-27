@@ -224,7 +224,7 @@ function recvButtonPressed(){
 	// イラストスプライトを生成する
 	let img = graphicBuffers[count];
 	let col = count % 3;
-	let s = new Sprite(width / 3 * (col+1), height / 6 * random(2,5), img.width, img.height, 'none');
+	let s = new Sprite(width / 4 * (col+1), height / 6 * random(2,5), img.width, img.height, 'none');
 	let rot = random(-5, 5);
 	s.rotation = rot;
 	s.draw = function(){ // スプライトの描画をオーバーライド
