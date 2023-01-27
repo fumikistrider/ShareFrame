@@ -64,13 +64,13 @@ function preload(){
 	img_wavefollows[5] = loadImage('wave_follow_5.png');
 	img_wavefollows[6] = loadImage('wave_follow_6.png');
 	
-	//bgm = loadSound('bgm.mp3');
+	bgm = loadSound('bgm.mp3', mp3loaded);
 	
 
 }
 
 function mp3loaded(){
-	bgm.loop();
+	//bgm.loop();
 }
 
 /////////////////////////////////////////////////////
@@ -79,14 +79,14 @@ function setup() {
 	print(socket);
 	//bgm.loop();
 
-  createCanvas(windowWidth, windowHeight);
-  background(255);
+	createCanvas(windowWidth, windowHeight);
+	background(255);
 	colorMode(RGB);
 
 	// 参加を受信した
 	socket.on('hello', someoneJoined);
 	// 参加
-  //socket.emit('hello', width, height);
+    //socket.emit('hello', width, height);
 	graphicBuffers[count] = createGraphics(gb_width, gb_height);
 
 	// 描画を受信した
@@ -289,7 +289,17 @@ function mousePressed(){
 }
 
 function keyPressed(){
-	recvButtonPressed();
+	print(keyCode);
+	if(keyCode === 80){
+		bgm.loop();
+	}
+	else if(keyCode === 77){
+		bgm.stop();
+	}
+	else if(keyCode === 32){
+		recvButtonPressed();
+	}
+	
 }
 /////////////////////////////////////////////////////
 //
