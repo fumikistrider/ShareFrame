@@ -15,7 +15,7 @@ let b = 255;
 // 波の高さ
 let waveHeight = 0.1;
 
-let HIGH_WAVE_COUNT = 3;
+let HIGH_WAVE_COUNT = 5;
 
 // Images
 let img_wave;
@@ -109,7 +109,11 @@ function setup() {
 		this.y += mov;
 		this.counter++;
 
-		if( this.counter === 180 && this.magnification == 9.0 && this.crabcount % 2 === 1 ){ // マンジュウガニ登場条件
+		if( this.counter === 180 && this.magnification == 9.0 ){
+
+			print('remove illust');
+			spr_illust.removeAll(); // イラスト消去
+			if( this.crabcount % 2 === 1 ){  // マンジュウガニ登場条件
 			let c = new Sprite(img_crabrare, random(width * 0.3, width * 0.7), random(height * 0.4, height * 0.6),'none');
 			c.addAnimation(img_crab_manju[0],img_crab_manju[1]);
 			c.moveTo( random(width * 0.3, width * 0.7), -100, random(0.40,1) );
@@ -118,14 +122,8 @@ function setup() {
 			c.life = 1000;
 			c.depth = 101;
 			spr_crabs.add(c);
-
+			}
 		}
-
-		if( this.counter === 180){
-			print('remove illust');
-			spr_illust.removeAll();
-		}
-
 		if( this.counter > 360 ){
 			this.counter = 0;
 			this.power++;
@@ -225,9 +223,8 @@ function recvButtonPressed(){
 
 	// イラストスプライトを生成する
 	let img = graphicBuffers[count];
-	let row = count / 3;
 	let col = count % 3;
-	let s = new Sprite(width / 3 * col, height / 3 * row, img.width, img.height, 'none');
+	let s = new Sprite(width / 3 * (col+1), height / 6 * random(2,5), img.width, img.height, 'none');
 	let rot = random(-5, 5);
 	s.rotation = rot;
 	s.draw = function(){ // スプライトの描画をオーバーライド
