@@ -15,7 +15,7 @@ let b = 255;
 // 波の高さ
 let waveHeight = 0.1;
 
-let HIGH_WAVE_COUNT = 5;
+let HIGH_WAVE_COUNT = 15;
 
 // Images
 let img_wave;
@@ -261,7 +261,8 @@ function someoneIsDrawing(x,y,rad){
 		graphicBuffers[count].noStroke();
 		graphicBuffers[count].strokeWeight(1);
 		graphicBuffers[count].fill(r, g, b, 100);
-		graphicBuffers[count].translate(x, y);
+		//graphicBuffers[count].translate(x, y);
+		graphicBuffers[count].translate(random(x - 5, x + 5), random(y - 5, y + 5));
 		graphicBuffers[count].rotate(random(0, TWO_PI));
 		graphicBuffers[count].triangle(3,0,-3,0,0,3);
 		graphicBuffers[count].pop();
