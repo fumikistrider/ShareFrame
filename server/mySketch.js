@@ -99,7 +99,8 @@ function setup() {
 	// 波
 	spr_wave = new Sprite(img_wave, width / 2, -height * 0.75, img_wave.width, img_wave.height, 'none');
 	//spr_wave.visible = false;
-	spr_wave.depth = 200;
+	//spr_wave.depth = 200;
+	spr_wave.layer = 200;
 	spr_wave.counter = 0;
 	spr_wave.power = 0;
 	spr_wave.crabcount = 0;
@@ -120,7 +121,8 @@ function setup() {
 			c.frameDelay = 12;
 			c.scale = 0.05;
 			c.life = 1000;
-			c.depth = 101;
+			//c.depth = 101;
+			c.layer = 101;
 			spr_crabs.add(c);
 			}
 		}
@@ -146,7 +148,8 @@ function setup() {
 	spr_wavefollow.animation.looping = false;
 	spr_wavefollow.animation.frameDelay = 12;
 	spr_wavefollow.animation.stop();
-	spr_wavefollow.depth = 100;
+	//spr_wavefollow.depth = 100;
+	spr_wavefollow.layer = 100;
 	spr_wavefollow.counter = 0;
 	spr_wavefollow.power = 0;
 	spr_wavefollow.magnification = 2.0;
@@ -205,7 +208,8 @@ function draw() {
 		c.moveTo( width + 100, random(height * 0.4, height *0.9), random(1,3) );
 		c.scale = 0.05;
 		c.life = 10000;
-		c.depth = 101;
+		//c.depth = 101;
+		c.layer = 101;
 		//c.rotationSpeed = random(0.1, 0.8);
 		c.update = function(){
 			if( this.life % 60 == 0 ) this.rotationSpeed *= -1;
