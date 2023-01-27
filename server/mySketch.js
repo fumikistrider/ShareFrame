@@ -293,7 +293,6 @@ function mousePressed(){
 }
 
 function keyPressed(){
-	print(keyCode);
 	if(keyCode === 80){
 		bgm.loop();
 	}
