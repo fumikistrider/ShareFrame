@@ -119,10 +119,12 @@ function setup() {
 			c.depth = 101;
 			spr_crabs.add(c);
 
+		}
+
+		if( this.counter === 180){
 			print('remove illust');
 			spr_illust.removeAll();
 		}
-
 
 		if( this.counter > 360 ){
 			this.counter = 0;
@@ -219,11 +221,13 @@ function draw() {
 //
 function recvButtonPressed(){
 
-print('Button Pressed');
+	print('Button Pressed');
 
 	// イラストスプライトを生成する
 	let img = graphicBuffers[count];
-	let s = new Sprite(width / 2, height / 2, img.width, img.height, 'none');
+	let row = count / 3;
+	let col = count % 3;
+	let s = new Sprite(width / 3 * col, height / 3 * row, img.width, img.height, 'none');
 	let rot = random(-5, 5);
 	s.rotation = rot;
 	s.draw = function(){ // スプライトの描画をオーバーライド
@@ -284,9 +288,11 @@ function mouseDragged(){
 }
 
 function mousePressed(){
-	spr_wavefollow.animation.nextFrame();
 }
 
+function keyPressed(){
+	recvButtonPressed();
+}
 /////////////////////////////////////////////////////
 //
 function buttonPressed(){
