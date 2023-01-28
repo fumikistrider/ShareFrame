@@ -34,15 +34,11 @@ let mov_help;
 function preload(){
 	img_bg = loadImage('sp_bg.png');
 	img_title = loadImage('sp_title.png');
-	mov_help = createVideo('tutorial.mp4', movLoaded);
 
 }
 
 function movLoaded(){
 	mov_help.hide()
-	mov_help.mousePressed(function(){
-		mov_help.hide();
-	});
 }
 
 /////////////////////////////////////////////////////
@@ -83,9 +79,15 @@ function setup() {
 	btn_help.position(width*0.75, height * 0.825);
 	btn_help.mouseReleased(helpPressed);
 
+	mov_help = createVideo('tutorial.mp4', movLoaded);
+	mov_help.hide()
+
 }
 
 function helpPressed(){
+	mov_help.mousePressed(function(){
+		mov_help.hide();
+	});
 	mov_help.show();
 	mov_help.position(width * 0.12, height * 0.1);
 	mov_help.play();
