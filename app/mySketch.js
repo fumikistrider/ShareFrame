@@ -2,8 +2,8 @@
 //let socket = io.connect($OP.getEchoServerURL(1762274));
 let socket = io.connect();
 let graphicBuffers = [];
-let gb_width = 390;
-let gb_height = 844;
+let gb_width = 980;
+let gb_height = 1669;
 
 // vars
 let count = 0;
@@ -38,13 +38,12 @@ function preload(){
 }
 
 function movLoaded(){
-	mov_help.hide()
+	//mov_help.hide()
 }
 
 /////////////////////////////////////////////////////
 //
 function setup() {
-	print(socket);
 	createCanvas(windowWidth, windowHeight);
 	background(img_bg);
 	colorMode(HSB,100,100,100,100);
