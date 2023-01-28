@@ -38,7 +38,7 @@ function preload(){
 }
 
 function movLoaded(){
-	//mov_help.hide()
+	mov_help.hide()
 }
 
 /////////////////////////////////////////////////////
