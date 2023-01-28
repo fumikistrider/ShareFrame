@@ -86,6 +86,7 @@ function setup() {
 
 function helpPressed(){
 	mov_help.mousePressed(function(){
+		mov_help.stop();
 		mov_help.hide();
 	});
 	mov_help.show();
