@@ -115,15 +115,23 @@ function setup() {
 			print('remove illust');
 			spr_illust.removeAll(); // イラスト消去
 			if( this.crabcount % 2 === 1 ){  // マンジュウガニ登場条件
-			let c = new Sprite(img_crabrare, random(width * 0.3, width * 0.7), random(height * 0.4, height * 0.6),'none');
-			c.addAnimation(img_crab_manju[0],img_crab_manju[1]);
-			c.moveTo( random(width * 0.3, width * 0.7), -100, random(0.40,1) );
-			c.frameDelay = 12;
-			c.scale = 0.05;
-			c.life = 1000;
-			//c.depth = 101;
-			c.layer = 101;
-			spr_crabs.add(c);
+				let c = new Sprite(img_crabrare, random(width * 0.3, width * 0.7), random(height * 0.4, height * 0.6),'none');
+				c.addAnimation(img_crab_manju[0],img_crab_manju[1]);
+				c.moveTo( random(width * 0.3, width * 0.7), -100, random(0.40,1) );
+				c.frameDelay = 12;
+				c.scale = 0.05;
+				c.life = 1000;
+				//c.depth = 101;
+				c.layer = 101;
+				spr_crabs.add(c);
+			}
+			if( this.crabcount % 6 === 0){
+				let c = new Sprite(img_crabrare, random(width * 0.3, width * 0.7), random(height * 0.5, height * 0.8),'none');
+				c.scale = 0.05;
+				c.life = 1000;
+				//c.depth = 101;
+				c.layer = 101;
+				spr_crabs.add(c);
 			}
 		}
 		if( this.counter > 360 ){
