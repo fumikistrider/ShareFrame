@@ -75,7 +75,7 @@ function setup() {
 
 	btn_help = createImg('help.png','ヘルプ');
 	btn_help.size(100,100);
-	btn_help.position(width*0.85, height * 0.07);
+	btn_help.position(width*0.85, height * 0.06);
 	btn_help.mouseReleased(helpPressed);
 
 	mov_help = createVideo('tutorial.mp4', movLoaded);

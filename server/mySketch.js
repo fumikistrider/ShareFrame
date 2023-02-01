@@ -127,7 +127,7 @@ function setup() {
 			}
 			if( this.crabcount % 6 === 0){
 				let c = new Sprite(img_crabrare, random(width * 0.3, width * 0.7), random(height * 0.5, height * 0.8),'none');
-				c.scale = 0.05;
+				c.scale = 0.20;
 				c.life = 1000;
 				//c.depth = 101;
 				c.layer = 101;
