@@ -234,16 +234,16 @@ function recvButtonPressed(){
 	let s = new Sprite(width / 4 * (col + 1), height / 6 * random(2,5), img.width, img.height, 'none');
 	let rot = random(-5, 5);
 	s.rotation = rot;
+	s.scale *= 0.5;
+	if(dice > 6.0) s.scale *= 3;
 	s.draw = function(){ // スプライトの描画をオーバーライド
 		push();
-		scale(0.5);
+		//scale(0.5);
+		scale(this.scale);
 		image(img, 0, 0);
 		pop();
 	}
 	s.depth = count;
-	s.scale *= 0.5;
-
-	if(dice > 6.0) s.scale *= 3;
 
 	spr_illust.add(s);
 
