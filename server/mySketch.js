@@ -127,7 +127,7 @@ function setup() {
 			}
 			if( this.crabcount % 6 === 0){
 				let c = new Sprite(img_crabrare, random(width * 0.3, width * 0.7), random(height * 0.5, height * 0.8),'none');
-				c.scale = 0.10;
+				c.scale = 0.15;
 				c.life = 3000;
 				//c.depth = 101;
 				c.layer = 101;
@@ -240,7 +240,7 @@ function recvButtonPressed(){
 	for(let i = 0; i < amount; i++){
 		let img = graphicBuffers[count];
 		let col = count % 3;
-		let s = new Sprite(width / 4 * (col + 1 + i), height / 6 * random(2,5), img.width, img.height, 'none');
+		let s = new Sprite(width / 4 * (col + 1 + i) * random(0.8, 1.2), height / 6 * random(2,5), img.width, img.height, 'none');
 		let rot = random(-5, 5);
 		s.rotation = rot;
 		s.scale = 0.5;
