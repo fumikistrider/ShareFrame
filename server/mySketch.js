@@ -240,7 +240,7 @@ function recvButtonPressed(){
 	for(let i = 0; i < amount; i++){
 		let img = graphicBuffers[count];
 		let col = count % 3;
-		let s = new Sprite(width / 4 * (col + 1 + i) * random(0.8, 1.2), height / 6 * random(2,5), img.width, img.height, 'none');
+		let s = new Sprite((width / 4) * random(0.8, 1.2) * (col + 1 + i) , height / 6 * random(2,5), img.width, img.height, 'none');
 		let rot = random(-5, 5);
 		s.rotation = rot;
 		s.scale = 0.5;
