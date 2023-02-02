@@ -237,24 +237,25 @@ function recvButtonPressed(){
 	if( dice < 1.0) amount = 3;
 
 	// イラストスプライトを生成する
-	let img = graphicBuffers[count];
-	let col = count % 3;
-	let s = new Sprite(width / 4 * (col + 1), height / 6 * random(2,5), img.width, img.height, 'none');
-	let rot = random(-5, 5);
-	s.rotation = rot;
-	s.scale = 0.5;
-	if(dice > 6.0) s.scale *= 3;
-	s.draw = function(){ // スプライトの描画をオーバーライド
-		push();
-		//scale(0.5);
-		scale(this.scale);
-		image(img, 0, 0);
-		pop();
+	for(let i = 0; i < amount; i++){
+		let img = graphicBuffers[count];
+		let col = count % 3;
+		let s = new Sprite(width / 4 * (col + 1 + i), height / 6 * random(2,5), img.width, img.height, 'none');
+		let rot = random(-5, 5);
+		s.rotation = rot;
+		s.scale = 0.5;
+		if(dice > 6.0) s.scale *= 3;
+		s.draw = function(){ // スプライトの描画をオーバーライド
+			push();
+			//scale(0.5);
+			scale(this.scale);
+			image(img, 0, 0);
+			pop();
+		}
+		s.depth = count;
+
+		spr_illust.add(s);
 	}
-	s.depth = count;
-
-	spr_illust.add(s);
-
 	// 次のバッファを生成する
 	count++;
 	graphicBuffers[count] = createGraphics(gb_width, gb_height);
