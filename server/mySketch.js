@@ -83,6 +83,7 @@ function setup() {
 	background(255);
 	colorMode(RGB);
 
+	print(windowWidth, windowHeight);
 	// 参加を受信した
 	socket.on('hello', someoneJoined);
 	// 参加
@@ -104,7 +105,7 @@ function setup() {
 	spr_wave.counter = 0;
 	spr_wave.power = 0;
 	spr_wave.crabcount = 0;
-	spr_wave.magnification = 2.0;
+	spr_wave.magnification = 3.0;
 	spr_wave.update = function(){
 		let mov = sin(this.counter) * this.magnification;
 		this.y += mov;
@@ -142,9 +143,9 @@ function setup() {
 				this.magnification = 9.0;
 				this.power = 0;
 			}else{
-				this.magnification = 2.0;
+				this.magnification = 3.0;
 			}
-			let rnd = random( width * 0.2, width * 0.8); // 次の波の横位置
+			let rnd = random( width * 0.3, width * 0.7); // 次の波の横位置
 			this.x = rnd;
 			spr_wavefollow.x = rnd;
 		}
