@@ -145,7 +145,7 @@ function setup() {
 			}else{
 				this.magnification = 3.0;
 			}
-			let rnd = random( width * 0.3, width * 0.7); // 次の波の横位置
+			let rnd = random( width * 0.35, width * 0.65); // 次の波の横位置
 			this.x = rnd;
 			spr_wavefollow.x = rnd;
 		}
