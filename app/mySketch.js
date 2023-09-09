@@ -33,7 +33,7 @@ let mov_help;
 //
 function preload(){
 	img_bg = loadImage('sp_bg.png');
-	img_title = loadImage('sp_title.png');
+	img_title = loadImage('logo.png');
 
 }
 
