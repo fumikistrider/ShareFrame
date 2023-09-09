@@ -257,6 +257,8 @@ function recvButtonPressed(){
 			push();
 			//scale(0.5);
 			scale(this.scale);
+			//  カードを描画する
+			image(img_dekigoto1, 0, 0);
 			image(img, 0, 0);
 			pop();
 		}
