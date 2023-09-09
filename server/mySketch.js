@@ -36,6 +36,8 @@ let spr_illust
 let img_dekigoto1;
 let img_dekigoto2;
 
+let penWeight = 3;
+
 // Animations
 let img_crabs = [];
 let img_crab_manju = [];
@@ -202,6 +204,10 @@ function setup() {
 			this.y = -height * 0.75;
 		}
 	}
+	// spr_waveを非表示にする
+	spr_wave.visible = false;
+	// spr_wavefollowを非表示にする
+	spr_wavefollow.visible = false;
 	// カニ
 	spr_crabs = new Group();
 	spr_illust = new Group();
@@ -211,27 +217,27 @@ function setup() {
 /////////////////////////////////////////////////////
 //
 function draw() {
-	background('Bisque');
-	image(img_beach,0,0,width,height);
-	fill(255);
+	//background('white');
+	// image(img_beach,0,0,width,height);
+	// fill(255);
 
-	// カニ
-	if( frameCount % 500 == 0 ){
-		let c;
-		c = new Sprite(img_crab, -50, random(height * 0.4, height *0.9),'none');
-		c.addAnimation(img_crabs[0],img_crabs[1]);
-		c.frameDelay = 6;
-		c.moveTo( width + 100, random(height * 0.4, height *0.9), random(1,3) );
-		c.scale = 0.05;
-		c.life = 10000;
-		//c.depth = 101;
-		c.layer = 101;
-		//c.rotationSpeed = random(0.1, 0.8);
-		c.update = function(){
-			if( this.life % 60 == 0 ) this.rotationSpeed *= -1;
-		};
-		spr_crabs.add(c);
-	}
+	// // カニ
+	// if( frameCount % 500 == 0 ){
+	// 	let c;
+	// 	c = new Sprite(img_crab, -50, random(height * 0.4, height *0.9),'none');
+	// 	c.addAnimation(img_crabs[0],img_crabs[1]);
+	// 	c.frameDelay = 6;
+	// 	c.moveTo( width + 100, random(height * 0.4, height *0.9), random(1,3) );
+	// 	c.scale = 0.05;
+	// 	c.life = 10000;
+	// 	//c.depth = 101;
+	// 	c.layer = 101;
+	// 	//c.rotationSpeed = random(0.1, 0.8);
+	// 	c.update = function(){
+	// 		if( this.life % 60 == 0 ) this.rotationSpeed *= -1;
+	// 	};
+	// 	spr_crabs.add(c);
+	// }
 }
 
 
@@ -242,7 +248,7 @@ function recvButtonPressed(){
 	print('Button Pressed');
 	let amount = 1;
 	let dice = random(0,7);
-	if( dice < 1.0) amount = 3;
+	//if( dice < 1.0) amount = 3;
 
 	// イラストスプライトを生成する
 	for(let i = 0; i < amount; i++){
@@ -251,8 +257,8 @@ function recvButtonPressed(){
 		let s = new Sprite((width / 4) * random(0.8, 1.2) * (col + 1 + i) , height / 6 * random(2,5), img.width, img.height, 'none');
 		let rot = random(-5, 5);
 		s.rotation = rot;
-		s.scale = 0.5;
-		if(dice > 6.0) s.scale *= 3;
+		s.scale = 1.0;
+		//if(dice > 6.0) s.scale *= 3;
 		s.draw = function(){ // スプライトの描画をオーバーライド
 			push();
 			//scale(0.5);
@@ -311,6 +317,12 @@ print('New user joined' + ' - width:' + w + ' - height:' + h + ' - count:' + cou
 /////////////////////////////////////////////////////
 //
 function mouseDragged(){
+	//　描画色を黒にする
+	fill(0);
+	// マウスの座標に円を描く
+	ellipse(mouseX, mouseY, penWeight, penWeight);
+	// マウスの直前の座標に円を描く
+	ellipse(pmouseX, pmouseY, penWeight, penWeight);
 }
 
 function mousePressed(){
