@@ -167,7 +167,6 @@ function recvButtonPressed(){
 
 		spr_illust.add(s);
 
-		s.draw();
 	}
 	// 次のバッファを生成する
 	count++;

@@ -119,7 +119,7 @@ function draw() {
 	translate(width/2,height*0.07);
 	scale(1.5);
 	imageMode(CENTER);
-	//image(img_title,0,0);
+	image(img_title,0,0);
 	pop();
 	
 }
