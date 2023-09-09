@@ -265,7 +265,7 @@ function recvButtonPressed(){
 			scale(this.scale);
 			//  カードを描画する
 			image(img_dekigoto1, 0, 0);
-			scale(this.scale * 0.25);
+			scale(this.scale * 0.2);
 			image(img, 0, 0);
 			pop();
 		}
@@ -301,7 +301,7 @@ function someoneIsDrawing(x,y,rad){
 		//graphicBuffers[count].translate(random(x - 5, x + 5), random(y - 5, y + 5));
 		//graphicBuffers[count].rotate(random(0, TWO_PI));
 		//graphicBuffers[count].triangle(3,0,-3,0,0,3);
-		graphicBuffers[count].ellipse(x, y, penWeight * 2, penWeight * 2);
+		graphicBuffers[count].ellipse(x, y, penWeight * 4, penWeight * 4);
 		graphicBuffers[count].pop();
 	}
 }
