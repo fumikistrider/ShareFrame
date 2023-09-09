@@ -105,7 +105,7 @@ function setup() {
 	// 送信を受信した
 	socket.on('buttonPressed', recvButtonPressed )
 
-	allSprites.autoDraw = false;
+	//allSprites.autoDraw = false;
 }
 
 /////////////////////////////////////////////////////
