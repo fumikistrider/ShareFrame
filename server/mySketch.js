@@ -32,6 +32,10 @@ let spr_crabs;
 // イラスト
 let spr_illust
 
+// 吹き出し画像の変数
+let img_dekigoto1;
+let img_dekigoto2;
+
 // Animations
 let img_crabs = [];
 let img_crab_manju = [];
@@ -64,6 +68,9 @@ function preload(){
 	img_wavefollows[5] = loadImage('wave_follow_5.png');
 	img_wavefollows[6] = loadImage('wave_follow_6.png');
 	
+	img_dekigoto1 = loadImage('dekigoto1.png');
+	img_dekigoto2 = loadImage('dekigoto2.png');
+
 	bgm = loadSound('bgm.mp3', mp3loaded);
 	
 
