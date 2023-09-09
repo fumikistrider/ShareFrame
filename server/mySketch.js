@@ -105,7 +105,113 @@ function setup() {
 	// 送信を受信した
 	socket.on('buttonPressed', recvButtonPressed )
 
-	//allSprites.autoDraw = false;
+	// スプライト
+	// 波
+	spr_wave = new Sprite(img_wave, width / 2, -height * 0.75, img_wave.width, img_wave.height, 'none');
+	//spr_wave.visible = false;
+	//spr_wave.depth = 200;
+	spr_wave.layer = 200;
+	spr_wave.counter = 0;
+	spr_wave.power = 0;
+	spr_wave.crabcount = 0;
+	spr_wave.magnification = 3.0;
+	spr_wave.update = function(){
+		let mov = sin(this.counter) * this.magnification;
+		this.y += mov;
+		this.counter++;
+
+		if( this.counter === 180 && this.magnification == 9.0 ){
+
+			print('remove illust');
+			spr_illust.removeAll(); // イラスト消去
+			if( this.crabcount % 2 === 1 ){  // マンジュウガニ登場条件
+				let c = new Sprite(img_crabrare, random(width * 0.3, width * 0.7), random(height * 0.4, height * 0.6),'none');
+				c.addAnimation(img_crab_manju[0],img_crab_manju[1]);
+				c.moveTo( random(width * 0.3, width * 0.7), -100, random(0.40,1) );
+				c.frameDelay = 12;
+				c.scale = 0.05;
+				c.life = 1000;
+				//c.depth = 101;
+				c.layer = 101;
+				spr_crabs.add(c);
+			}
+			if( this.crabcount % 6 === 0){
+				let c = new Sprite(img_crabrare, random(width * 0.3, width * 0.7), random(height * 0.5, height * 0.8),'none');
+				c.scale = 0.15;
+				c.life = 3000;
+				//c.depth = 101;
+				c.layer = 101;
+				spr_crabs.add(c);
+			}
+		}
+		if( this.counter > 360 ){
+			this.counter = 0;
+			this.power++;
+			this.crabcount++;
+			if( this.power == HIGH_WAVE_COUNT ){
+				this.magnification = 9.0;
+				this.power = 0;
+			}else{
+				this.magnification = 3.0;
+			}
+			let rnd = random( width * 0.35, width * 0.65); // 次の波の横位置
+			this.x = rnd;
+			spr_wavefollow.x = rnd;
+		}
+
+	}
+	// 波跡
+	spr_wavefollow = new Sprite(img_wavefollow, width / 2, -height * 0.75, img_wavefollow.width, img_wavefollow.height, 'none');
+	spr_wavefollow.addAnimation(img_wavefollows[0],img_wavefollows[1],img_wavefollows[2],img_wavefollows[3],img_wavefollows[4],img_wavefollows[5],img_wavefollows[6]);
+	spr_wavefollow.animation.looping = false;
+	spr_wavefollow.animation.frameDelay = 12;
+	spr_wavefollow.animation.stop();
+	//spr_wavefollow.depth = 100;
+	spr_wavefollow.layer = 100;
+	spr_wavefollow.counter = 0;
+	spr_wavefollow.power = 0;
+	spr_wavefollow.magnification = 2.0;
+	spr_wavefollow.update = function(){
+
+		if( this.counter === 180){
+			if(this.magnification === 2.0){
+					spr_wavefollow.animation.frameDelay = 24;
+			}else{
+					spr_wavefollow.animation.frameDelay = 24;
+			}
+			this.animation.play();
+		}
+
+		if( this.counter < 180 ){
+			let mov = sin(this.counter) * this.magnification;
+			this.y += mov;
+		}else{
+
+		}
+		this.counter++;
+		if( this.counter > 360 ){
+			this.counter = 0;
+			this.power++;
+			this.animation.stop();
+			this.animation.goToFrame(0);
+			if( this.power == HIGH_WAVE_COUNT ){
+				this.magnification = 9.0;
+				this.power = 0;
+			}else{
+				this.magnification = 2.0;
+			}
+			//this.x = random( width * 0.2, width * 0.8);
+			this.y = -height * 0.75;
+		}
+	}
+	// spr_waveを非表示にする
+	spr_wave.visible = false;
+	// spr_wavefollowを非表示にする
+	spr_wavefollow.visible = false;
+	// カニ
+	spr_crabs = new Group();
+	spr_illust = new Group();
+
 }
 
 /////////////////////////////////////////////////////
@@ -166,7 +272,6 @@ function recvButtonPressed(){
 		s.depth = count;
 
 		spr_illust.add(s);
-
 	}
 	// 次のバッファを生成する
 	count++;
@@ -193,10 +298,10 @@ function someoneIsDrawing(x,y,rad){
 		//graphicBuffers[count].fill(r, g, b, 100);
 		graphicBuffers[count].fill(0);
 		//graphicBuffers[count].translate(x, y);
-		graphicBuffers[count].translate(random(x - 3, x + 3), random(y - 3, y + 3));
+		//graphicBuffers[count].translate(random(x - 5, x + 5), random(y - 5, y + 5));
 		//graphicBuffers[count].rotate(random(0, TWO_PI));
 		//graphicBuffers[count].triangle(3,0,-3,0,0,3);
-		graphicBuffers[count].ellipse(x, y, penWeight*2, penWeight*2);
+		graphicBuffers[count].ellipse(x, y, penWeight * 2, penWeight * 2);
 		graphicBuffers[count].pop();
 	}
 }
