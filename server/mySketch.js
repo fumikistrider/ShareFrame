@@ -46,6 +46,9 @@ let img_wavefollows = [];
 // 描画色の変数
 let col = 'black';
 
+let px;
+let py;
+
 // BGM
 let bgm;
 
@@ -289,6 +292,9 @@ function someoneIsDrawing(x,y,rad){
 
 	print('x:' + x + ' y:' + y + ' rad:' + rad);
 
+	if(px === 0) px = x;
+	if(py === 0) py = y;
+
 	for(let i = 0 ; i < rad ; i++){
 
 		r = constrain(random(r - 2, r + 2), 160, 180);
@@ -297,7 +303,7 @@ function someoneIsDrawing(x,y,rad){
 
 		graphicBuffers[count].push();
 		graphicBuffers[count].noStroke();
-		graphicBuffers[count].strokeWeight(1);
+		graphicBuffers[count].strokeWeight(penWeight);
 		//graphicBuffers[count].fill(r, g, b, 100);
 		graphicBuffers[count].fill(0);
 		//graphicBuffers[count].translate(x, y);
@@ -305,8 +311,11 @@ function someoneIsDrawing(x,y,rad){
 		//graphicBuffers[count].rotate(random(0, TWO_PI));
 		//graphicBuffers[count].triangle(3,0,-3,0,0,3);
 		graphicBuffers[count].ellipse(x, y, penWeight * 4, penWeight * 4);
+		graphicBuffers[count].line(px, py, x, y);
 		graphicBuffers[count].pop();
 	}
+
+
 }
 
 /////////////////////////////////////////////////////
@@ -330,6 +339,8 @@ function mouseDragged(){
 	ellipse(mouseX, mouseY, penWeight, penWeight);
 	// マウスの直前の座標に円を描く
 	ellipse(pmouseX, pmouseY, penWeight, penWeight);
+
+	line(pmouseX, pmouseY, mouseX, mouseY);
 }
 
 function mousePressed(){
