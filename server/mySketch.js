@@ -43,6 +43,9 @@ let img_crabs = [];
 let img_crab_manju = [];
 let img_wavefollows = [];
 
+// 描画色の変数
+let col = 'black';
+
 // BGM
 let bgm;
 
@@ -321,7 +324,7 @@ print('New user joined' + ' - width:' + w + ' - height:' + h + ' - count:' + cou
 //
 function mouseDragged(){
 	//　描画色を黒にする
-	fill(0);
+	fill(col);
 	// マウスの座標に円を描く
 	ellipse(mouseX, mouseY, penWeight, penWeight);
 	// マウスの直前の座標に円を描く
@@ -344,6 +347,22 @@ function keyPressed(){
 	else if(keyCode === 67){
 		spr_illust.removeAll();
 	}
+	else if(keyCode === 49){
+		col = 'black';
+	}
+	else if(keyCode === 50){
+		col = 'red';
+	}
+	else if(keyCode === 51){
+		col = 'yellow';
+	}
+	else if(keyCode === 52){
+		col = 'blue';
+	}
+	else if(keyCode === 53){
+		col = 'green';
+	}
+
 
 }
 /////////////////////////////////////////////////////
