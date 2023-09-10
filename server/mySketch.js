@@ -306,6 +306,7 @@ function someoneIsDrawing(x,y,rad){
 		graphicBuffers[count].strokeWeight(penWeight * 3);
 		//graphicBuffers[count].fill(r, g, b, 100);
 		graphicBuffers[count].fill(0);
+		graphicBuffers[count].stroke(0);
 		//graphicBuffers[count].translate(x, y);
 		//graphicBuffers[count].translate(random(x - 5, x + 5), random(y - 5, y + 5));
 		//graphicBuffers[count].rotate(random(0, TWO_PI));
