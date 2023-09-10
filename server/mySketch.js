@@ -312,6 +312,8 @@ function someoneIsDrawing(x,y,rad){
 		//graphicBuffers[count].triangle(3,0,-3,0,0,3);
 		graphicBuffers[count].ellipse(x, y, penWeight * 4, penWeight * 4);
 		graphicBuffers[count].line(px, py, x, y);
+		px = x;
+		py = y;
 		graphicBuffers[count].pop();
 	}
 
@@ -335,6 +337,7 @@ function mouseDragged(){
 	//　描画色を黒にする
 	stroke(col);
 	fill(col);
+	strokeWeight(penWeight);
 	// マウスの座標に円を描く
 	ellipse(mouseX, mouseY, penWeight, penWeight);
 	// マウスの直前の座標に円を描く
