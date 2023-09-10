@@ -312,7 +312,7 @@ function someoneIsDrawing(x,y,rad){
 		//graphicBuffers[count].rotate(random(0, TWO_PI));
 		//graphicBuffers[count].triangle(3,0,-3,0,0,3);
 		graphicBuffers[count].ellipse(x, y, penWeight * 3, penWeight * 3);
-		graphicBuffers[count].line(px, py, x, y);
+		//graphicBuffers[count].line(px, py, x, y);
 		px = x;
 		py = y;
 		graphicBuffers[count].pop();
@@ -340,9 +340,9 @@ function mouseDragged(){
 	fill(col);
 	strokeWeight(penWeight);
 	// マウスの座標に円を描く
-	ellipse(mouseX, mouseY, penWeight, penWeight);
+	//ellipse(mouseX, mouseY, penWeight, penWeight);
 	// マウスの直前の座標に円を描く
-	ellipse(pmouseX, pmouseY, penWeight, penWeight);
+	//ellipse(pmouseX, pmouseY, penWeight, penWeight);
 
 	line(pmouseX, pmouseY, mouseX, mouseY);
 }
