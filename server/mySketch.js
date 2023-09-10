@@ -302,7 +302,7 @@ function someoneIsDrawing(x,y,rad){
 		b = constrain(random(b - 2, b + 2), 72, 92);
 
 		graphicBuffers[count].push();
-		graphicBuffers[count].noStroke();
+		//graphicBuffers[count].noStroke();
 		graphicBuffers[count].strokeWeight(penWeight * 3);
 		//graphicBuffers[count].fill(r, g, b, 100);
 		graphicBuffers[count].fill(0);
@@ -311,7 +311,7 @@ function someoneIsDrawing(x,y,rad){
 		//graphicBuffers[count].translate(random(x - 5, x + 5), random(y - 5, y + 5));
 		//graphicBuffers[count].rotate(random(0, TWO_PI));
 		//graphicBuffers[count].triangle(3,0,-3,0,0,3);
-		graphicBuffers[count].ellipse(x, y, penWeight * 4, penWeight * 4);
+		graphicBuffers[count].ellipse(x, y, penWeight * 3, penWeight * 3);
 		graphicBuffers[count].line(px, py, x, y);
 		px = x;
 		py = y;
@@ -338,7 +338,7 @@ function mouseDragged(){
 	//　描画色を黒にする
 	stroke(col);
 	fill(col);
-	strokeWeight(penWeight * 3);
+	strokeWeight(penWeight);
 	// マウスの座標に円を描く
 	ellipse(mouseX, mouseY, penWeight, penWeight);
 	// マウスの直前の座標に円を描く
