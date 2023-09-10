@@ -324,6 +324,7 @@ print('New user joined' + ' - width:' + w + ' - height:' + h + ' - count:' + cou
 //
 function mouseDragged(){
 	//　描画色を黒にする
+	stroke(col);
 	fill(col);
 	// マウスの座標に円を描く
 	ellipse(mouseX, mouseY, penWeight, penWeight);
